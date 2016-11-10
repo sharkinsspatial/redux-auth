@@ -5,7 +5,7 @@ module.exports = {
   target:  "web",
   cache:   false,
   context: __dirname,
-  devtool: "source-map",
+  devtool: false,
   entry:   {
     "index":             "./src/index",
     "bootstrap-theme":   "./src/views/bootstrap/index",
