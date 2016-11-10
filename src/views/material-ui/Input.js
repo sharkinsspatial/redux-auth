@@ -56,7 +56,8 @@ class AuthInput extends React.Component {
         <TextField
           fullWidth={true}
           id={this.props.className}
-          {...this.props}
+          label={this.props.label}
+          value={this.props.value}
           errorText={this.renderErrorList()}
           onChange={this.handleInput.bind(this)} />
       </MuiThemeProvider>
