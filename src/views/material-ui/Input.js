@@ -56,7 +56,7 @@ class AuthInput extends React.Component {
         <TextField
           fullWidth={true}
           id={this.props.className}
-          label={this.props.label}
+          floatingLabelText={this.props.floatingLabelText}
           value={this.props.value}
           errorText={this.renderErrorList()}
           onChange={this.handleInput.bind(this)} />

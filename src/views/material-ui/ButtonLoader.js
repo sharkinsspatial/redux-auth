@@ -92,8 +92,6 @@ class ButtonLoader extends React.Component {
       children: this.props.children,
       className: this.props.className,
       disabled: this.props.disabled || this.props.loading,
-      disabledBackgroundColor: this.props.disabledBackgroundColor,
-      disabledLabelColor: this.props.disabledLabelColor,
       fullWidth: this.props.fullWidth,
       href: this.props.href,
       label: this.props.label || <span style={{paddingLeft: 15, color}}>{this.props.children}</span>,
