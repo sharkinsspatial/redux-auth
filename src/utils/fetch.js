@@ -22,7 +22,7 @@ var isApiRequest = function(url) {
  */
 export function addAuthorizationHeader(accessToken, headers) {
   return Object.assign({}, headers, {
-    Authorization: `Bearer ${accessToken}`
+    Authorization: accessToken
   });
 }
 
