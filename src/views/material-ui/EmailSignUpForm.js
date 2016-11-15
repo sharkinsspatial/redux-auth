@@ -84,6 +84,11 @@ class EmailSignUpForm extends React.Component {
                onChange={this.handleInput.bind(this, "password_confirmation")}
                {...this.props.inputProps.passwordConfirmation} />
 
+        <Input type="text"
+               floatingLabelText="Digital Globe API Token"
+               className="email-sign-up-password-confirmation"
+               disabled={disabled} />
+
         <ButtonLoader loading={this.props.auth.getIn(["emailSignUp", this.getEndpoint(), "loading"])}
                       type="submit"
                       className="email-sign-up-submit"
