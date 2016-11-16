@@ -58,6 +58,7 @@ class AuthInput extends React.Component {
           id={this.props.className}
           floatingLabelText={this.props.floatingLabelText}
           value={this.props.value}
+          type={this.props.type}
           errorText={this.renderErrorList()}
           onChange={this.handleInput.bind(this)} />
       </MuiThemeProvider>
