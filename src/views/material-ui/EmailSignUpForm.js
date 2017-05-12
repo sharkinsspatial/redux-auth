@@ -9,6 +9,11 @@ class EmailSignUpForm extends React.Component {
   static propTypes = {
     endpoint: PropTypes.string,
     next: PropTypes.func,
+    additionalElements: PropTypes.arrayOf(
+      PropTypes.shape({
+        label: PropTypes.string,
+        binding: PropTypes.string
+    })),
     inputProps: PropTypes.shape({
       email: PropTypes.object,
       password: PropTypes.object,
@@ -75,14 +80,18 @@ class EmailSignUpForm extends React.Component {
                onChange={this.handleInput.bind(this, "password")}
                {...this.props.inputProps.password} />
 
-        <Input type="text"
-               floatingLabelText="Digital Globe Token"
-               className="email-sign-up-password-confirmation"
-               disabled={disabled}
-               value={this.props.auth.getIn(["emailSignUp", this.getEndpoint(), "form", "token"])}
-               errors={this.props.auth.getIn(["emailSignUp", this.getEndpoint(), "errors", "token"])}
-               onChange={this.handleInput.bind(this, "token")}
-               {...this.props.inputProps.token} />
+        {this.props.additionalElements.map((additionalElement) => {
+            return (
+              <Input type="text"
+                 floatingLabelText={additionalElement.label}
+                 className="email-sign-up-password-confirmation"
+                 disabled={disabled}
+                 value={this.props.auth.getIn(["emailSignUp", this.getEndpoint(), "form", additionalElement.binding])}
+                 errors={this.props.auth.getIn(["emailSignUp", this.getEndpoint(), "errors", additionalElement.binding])}
+                 onChange={this.handleInput.bind(this, additionalElement.binding)}
+                 {...this.props.inputProps[additionalElement.binding]} />
+            );
+        })}
 
         <ButtonLoader loading={this.props.auth.getIn(["emailSignUp", this.getEndpoint(), "loading"])}
                       type="submit"
