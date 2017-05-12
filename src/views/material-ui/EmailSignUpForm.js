@@ -80,9 +80,11 @@ class EmailSignUpForm extends React.Component {
                onChange={this.handleInput.bind(this, "password")}
                {...this.props.inputProps.password} />
 
-        {this.props.additionalElements.map((additionalElement) => {
+        {this.props.additionalElements &&
+          this.props.additionalElements.map((additionalElement) => {
             return (
               <Input type="text"
+                 key={additionalElement.binding}
                  floatingLabelText={additionalElement.label}
                  className="email-sign-up-password-confirmation"
                  disabled={disabled}
@@ -91,7 +93,7 @@ class EmailSignUpForm extends React.Component {
                  onChange={this.handleInput.bind(this, additionalElement.binding)}
                  {...this.props.inputProps[additionalElement.binding]} />
             );
-        })}
+          })}
 
         <ButtonLoader loading={this.props.auth.getIn(["emailSignUp", this.getEndpoint(), "loading"])}
                       type="submit"
